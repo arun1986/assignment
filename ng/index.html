@@ -1,0 +1,77 @@
+<!doctype html>
+<html ng-app="demo">
+  <head>
+    <title>My Angular App</title>
+    <script src="angular.js"></script>
+	<script src="script.js"></script>
+	<link href="style.css" rel="stylesheet" />
+	<link href="bootstrap.min.css" rel="stylesheet" />
+  </head>
+ <body ng-controller="mycontroller">
+ <div class="container">
+     <header>
+	   <h1>My Contacts</h1>
+     </header>
+	 <aside>
+	 <button ng-click="cancel()" class="btn btn-primary">+New</button>
+	   <ul class="list">
+	   <li ng-repeat="e in users">{{e.Fname}} {{e.Lname}} <span><a ng-click="edit($index)" class="btn">Edit</a><a ng-click="deleterow($index)" class="btn">Delete</a></span></li>
+	   </ul>
+	 </aside>
+	<section>
+	<h3>ADD OR EDIT CONTACT (FULL NAME)</h3>
+	<form name="form" ng-submit="submit()" role="form">
+	<div class="form-container">
+	  <div class="form-container-left">
+	    <div class="form-group">
+            <label for="Fname">First Name</label>
+            <input type="text" name="Fname" id="Fname" ng-model="Fname" placeholder="Enter First Name" class="form-control" required />
+            <span class="help-block" ng-show="form.Fname.$touched && form.Fname.$invalid" >Fname is required</span>
+        </div>
+        <div class="form-group">
+            <label for="Lname">Last Name</label>
+            <input type="text" name="Lname" ng-model="Lname" id="Lname" placeholder="Enter Last Name" class="form-control" required />
+            <span class="help-block" ng-hide="showhide">Lname is required</span>
+        </div>
+		<div class="form-group">
+            <label for="BirthDay">Birth Day</label>
+            <input type="date" name="date" id="date"  ng-model="date" placeholder="DD/MM/YYYY" class="form-control" required />
+            <span class="help-block" ng-hide="showhide">Birth Day is required</span>
+        </div>
+		<div class="form-group">
+            <label for="Company">Company</label>
+            <input type="text" name="Company" id="Company"  ng-model="Company" placeholder="Enter Company" class="form-control" required />
+            <span class="help-block" ng-hide="showhide">Company name is required</span>
+        </div>
+		<div class="form-group">
+            <label for="EmailAddress">Email Address</label>
+            <input type="email" name="email" id="email"  ng-model="email" placeholder="example@domain.com" class="form-control" required />
+            <span class="help-block" ng-hide="showhide">Email Address is required</span>
+        </div>
+		<div class="form-group">
+            <label for="MobileNumber">Mobile Number</label>
+            <input type="tel" name="MobileNumber"  ng-model="MobileNumber" id="MobileNumber" placeholder="000-000-0000" class="form-control" required />
+            <span class="help-block" ng-hide="showhide">Mobile Number is required</span>
+        </div>
+		<input type="hidden" name="index" ng-model="index"/>
+	  </div><!--/form-container-left-->
+	  <div class="form-container-right">
+	   		<div class="form-group">
+			<div class="image">No Preview</div>
+            <button class="btn btn-primary">Upload Image</button>
+        </div>
+	  </div><!--/form-container-right-->
+	  <div class="clear"></div>
+	    <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button ng-click="cancel()" class="btn btn-link">Cancel</button>
+        </div>
+	</div><!--/end of form-container-->       
+    </form>	
+	</section>
+	<footer>
+	<h1>Footer</h1>
+	</footer> 
+ </div><!--/end of conatiner-->
+</body>
+</html>
